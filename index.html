@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="accredibleApp">
 <head>
 	<title>Accredible Embeddable Certificate Customiser</title>
-	<link rel="stylesheet" type="text/css" href="./style.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css"> 
 </head>
 <body>
 	<article>
@@ -13,10 +13,63 @@
 		</section>
 		<section>
 			<div>
+				<h2>Select Your Credential</h2>
+				<p>I don't have an API-KEY to do this...</p>
+			</div>
+		</section>
+		<section>
+			<div>
+				<h2>Customise Your Credential</h2>
+				<div ng-controller="CustomiseController">
+					<form>
+						<label>
+							<span>Width</span>
+							<input type="number" min="200" step="10" placeholder="width" ng-model="width" ng-change="proportionCheck('width');">
+						</label>
+						<label>
+							<span>Height</span>
+							<input type="number" min="200" step="10" placeholder="height" ng-model="height" ng-change="proportionCheck('height');">
+						</label>
+						<label>
+							<span>Maintain proportion?</span>
+							<input type="checkbox" ng-model="maintainProportion" ng-change="proportionCheck();">
+						</label>
+						<label>
+							<span>Show logo?</span>
+							<input type="checkbox" ng-model="showLogo">
+						</label>
+					</form>
+					<h3>Copy this HTML snippet to your site</h3>
+					<pre>{{ html }}</pre>
+					<h3>Preview</h3>
+					<div id="preview" ng-bind-html="html | unsafe"></div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div>
 				<h1>Notes</h1>
 				<p>I'm just adding notes as I go...</p>
+				<h2>Static File Server</h2>
+				<p>In order to properly use proper angular templates, we need to use http:// rather than file://</p>
+				<pre>npm install http-server -g
+http-server</pre>
 				<h2>SASS compilation</h2>
-				<pre>sass --sourcemap=none --watch style.scss:style.css</pre>
+				<pre>sass --sourcemap=none --watch css/style.scss:css/style.css</pre>
+				<h2>Todo</h2>
+				<ul>
+					<li>Simple service to share the current credential ID</li>
+					<li>Get an API KEY so I can list all credentials</li>
+				</ul>
+				<h2>Feedback</h2>
+				<p>Instead of rendering basic HTML (&lt;img&gt; + &lt;a&gt;) I think a hosted, embedded &lt;iframe&gt; would have much more scope for usability and future changes.</p>
+				<p>Since &lt;iframes&gt; can be session-aware, accredible could taylor the viewing experience to the current user, ie:</p>
+				<p style="text-align: center;">
+					<img src="gfx/iframe.png">
+					<br>
+					When I view a Google map I can: star the location, get directions etc.
+				</p>
+				<p>For accredible this could be a similar service: prompt to register / login, star this course etc.</p>
 			</div>
 		</section>
 		<section>
@@ -28,7 +81,7 @@
 				<h3>Deliverables</h3>
 				<ol>
 					<li>A repository of the code you produced.</li>
-					<li>A quick video where you demo the project (production values aren&#39;t important - just how you&#39;d show the project to us in person</li>
+					<li>A quick video where you demo the project (production values aren&#39;t important - just how you&#39;d show the project to us in person)</li>
 				</ol>
 				<h3>Assessment Guidelines</h3>
 				<ul>
@@ -53,8 +106,8 @@
 							<li><strong>https://api.accredible.com/v1/credentials/10000005</strong></li>
 						</ul>
 					</ul>
-					<li>Credential preview images are found at <strong>https://s3.amazonaws.com/staging_accredible_api_mails/{{credential.id}}</strong></li>
-					<li>Credentials should link to <strong>https://www.credential.net/{{credential.id}}</strong></li>
+					<li>Credential preview images are found at <strong>https://s3.amazonaws.com/staging_accredible_api_mails/10000005</strong></li>
+					<li>Credentials should link to <strong>https://www.credential.net/10000005</strong></li>
 					<li>Other resources:</li>
 					<ul>
 						<li>An example certificate for reference: <strong>https://www.credential.net/10000005</strong></li>
@@ -69,5 +122,8 @@
 			<p>Bish bash bosh - David King</p>
 		</div>
 	</footer>
+	<script type="text/javascript" src="./js/angular.min.js"></script>
+	<script type="text/javascript" src="./js/angular-animate.min.js"></script>
+	<script type="text/javascript" src="./js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,76 @@
+@import 'normalize';
+
+
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+
+@mixin centredcolumn {
+	width: 800px;
+	margin: 0 auto;
+	padding: 1px 0;
+}
+
+
+body {
+	font: 100% $font-stack;
+	color: $primary-color;
+}
+article {
+	> section {
+		&:nth-of-type(odd) {
+			background-color: #EEEEEE;
+		}
+		> div {
+			@include centredcolumn;
+		}
+	}
+}
+form {
+	width: 350px;
+	margin: 0 auto;
+	> label {
+		display: block;
+		margin: 0.83em 0;
+		> span {
+			display: inline-block;
+			width: 180px;
+			text-align: right;
+			margin: 0 10px 0 0;
+		}
+		> input[type="number"] {
+			display: inline-block;
+			width: 102px;
+			padding: 4px;
+			text-align: center;
+		}
+		> input[type="checkbox"] {
+			margin: 4px 0 4px 46px;
+		}
+	}
+}
+#preview {
+	background-color: #888888;
+	padding: 10px;
+	margin: 0.83em 0;
+	a {
+		color: #000000;
+		text-decoration: none;
+	}
+}
+pre {
+	padding: 8px 16px;
+	overflow: auto;
+	line-height: 1.45;
+	background-color: #02162B;
+	color: #FFFFFF;
+	border-radius: 3px;
+}
+footer {
+	background-color: #02162B;
+	color: #FFFFFF;
+	> div {
+		@include centredcolumn;
+		text-align: center;
+	}
+}

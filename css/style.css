@@ -375,6 +375,41 @@ article > section > div {
   margin: 0 auto;
   padding: 1px 0; }
 
+form {
+  width: 350px;
+  margin: 0 auto; }
+  form > label {
+    display: block;
+    margin: 0.83em 0; }
+    form > label > span {
+      display: inline-block;
+      width: 180px;
+      text-align: right;
+      margin: 0 10px 0 0; }
+    form > label > input[type="number"] {
+      display: inline-block;
+      width: 102px;
+      padding: 4px;
+      text-align: center; }
+    form > label > input[type="checkbox"] {
+      margin: 4px 0 4px 46px; }
+
+#preview {
+  background-color: #888888;
+  padding: 10px;
+  margin: 0.83em 0; }
+  #preview a {
+    color: #000000;
+    text-decoration: none; }
+
+pre {
+  padding: 8px 16px;
+  overflow: auto;
+  line-height: 1.45;
+  background-color: #02162B;
+  color: #FFFFFF;
+  border-radius: 3px; }
+
 footer {
   background-color: #02162B;
   color: #FFFFFF; }
@@ -383,11 +418,3 @@ footer {
     margin: 0 auto;
     padding: 1px 0;
     text-align: center; }
-
-pre {
-  padding: 16px;
-  overflow: auto;
-  line-height: 1.45;
-  background-color: #02162B;
-  color: #FFFFFF;
-  border-radius: 3px; }
